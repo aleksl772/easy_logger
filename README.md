@@ -6,7 +6,7 @@ from logger import logging
 logging('critical', True, 'args 4', 'args 2', 'args 3', 'critical')
 
 # settings:
-global_printing - disable all print
+global_printing - disable all print (boolean)
 
 First argument: logging level (str).
 
