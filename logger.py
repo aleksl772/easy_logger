@@ -50,15 +50,3 @@ def _save_to_disk(log_line: str):
             file.write(log_line)
         except:
             print('error write to file:', full_path, log_line)
-
-
-def test():
-    logging('INFO', True, 'args 1', 'args 2', 'args 3', 'info')
-    logging('debug', True, 'args 2', 'args 2', 'args 3', 'debug')
-    logging('debug', False, 'args 3', 'args 2', 'args 3', 'debug')
-    logging('error', True, 'args 4', 'args 2', 'args 3', 'error')
-    logging('critical', True, 'args 4', 'args 2', 'args 3', 'critical')
-
-
-if __name__ == "__main__":
-    test()
