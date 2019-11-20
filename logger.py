@@ -16,14 +16,14 @@ def logging(level='INFO', printing=False, *args):
                 arg=one
             )
     else:
-        msg_line = 'Empty'
+        msg_line: str = 'Empty'
 
-    if printing and LoggerSettings.global_printing:
+    if printing and _check_weight_level(level, 'print'):
         print(msg_line)
 
     msg_line = '{}\n'.format(msg_line)
 
-    if _check_weight_level(level):
+    if _check_weight_level(level, 'log'):
         _save_to_disk(msg_line)
 
 
@@ -31,15 +31,19 @@ def _get_log_full_path(log_file_name: str) -> str:
     return os.path.join(os.getcwd(), log_file_name)
 
 
-def _get_date_time():
+def _get_date_time() -> str:
     now = datetime.datetime.now()
     return now.strftime(LoggerSettings.date_time_format)
 
 
-def _check_weight_level(level: str) -> bool:
-    weight = LoggerSettings.weight_level.get(level.upper())
-    global_weight = LoggerSettings.weight_level.get(
-        LoggerSettings.global_log_level)
+def _check_weight_level(level: str, action: str) -> bool:
+    act_dict: dict = {
+        'log': LoggerSettings.global_log_level,
+        'print': LoggerSettings.global_print_level,
+    }
+    weight: int = LoggerSettings.weight_level.get(level.upper())
+    global_weight: int = LoggerSettings.weight_level.get(
+        act_dict.get(action))
     return weight >= global_weight
 
 
