@@ -52,5 +52,5 @@ def _save_to_disk(log_line: str):
     with open(full_path, mode='a') as file:
         try:
             file.write(log_line)
-        except:
-            print('error write to file:', full_path, log_line)
+        except Exception as e:
+            print('error write to file:', full_path, log_line, e)
