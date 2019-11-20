@@ -3,8 +3,8 @@
 ###### Requiremets:
 python >= 3
 
-###### First argument:
-logging level (str).  
+###### Arguments:
+First argument: logging level (str).  
 Two argument: printing enable (True or False, boolean).  
 Others arguments: (str).  
 
