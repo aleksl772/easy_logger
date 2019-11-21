@@ -4,6 +4,46 @@ import datetime
 from logger_settings import LoggerSettings
 
 
+def logging_debug(*args):
+    logging('DEBUG', False, *args)
+
+
+def logging_info(*args):
+    logging('INFO', False, *args)
+
+
+def logging_warning(*args):
+    logging('WARNING', False, *args)
+
+
+def logging_error(*args):
+    logging('ERROR', False, *args)
+
+
+def logging_critical(*args):
+    logging('CRITICAL', False, *args)
+
+
+def logging_debug_prt(*args):
+    logging('DEBUG', True, *args)
+
+
+def logging_info_prt(*args):
+    logging('INFO', True, *args)
+
+
+def logging_warning_prt(*args):
+    logging('WARNING', True, *args)
+
+
+def logging_error_prt(*args):
+    logging('ERROR', True, *args)
+
+
+def logging_critical_prt(*args):
+    logging('CRITICAL', True, *args)
+
+
 def logging(level='INFO', printing=False, *args):
     if args:
         msg_line = _get_date_time() + '{separator}{level}'.format(
